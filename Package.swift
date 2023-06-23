@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "CursorPagination",
+    name: "cursor-pagination",
     platforms: [
         .macOS(.v10_15),
         .iOS(.v13),
@@ -18,9 +18,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/vapor.git", .upToNextMajor(from: "4.0.0")),
         .package(url: "https://github.com/vapor/fluent.git", .upToNextMajor(from: "4.0.0")),
         .package(url: "https://github.com/Appsaurus/FluentExtensions", .upToNextMajor(from: "1.1.0")),
-        .package(url: "https://github.com/Appsaurus/FluentSeeder", .upToNextMajor(from: "1.0.0")),
         .package(url: "https://github.com/Appsaurus/CodableExtensions",  .upToNextMajor(from: "1.0.0")),
-        .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", .upToNextMajor(from:"4.0.0")),
     ],
     targets: [
         .target(
@@ -30,13 +28,7 @@ let package = Package(
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "CodableExtensions", package: "CodableExtensions"),
                 .product(name: "FluentExtensions", package: "FluentExtensions")
-                
             ]),
-        .testTarget(name: "CursorPaginationTests", dependencies: [
-            .target(name: "CursorPagination"),
-            .product(name: "FluentTestModelsSeeder", package: "FluentSeeder"),
-            .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver")
-        ])
     ]
 )
 
